@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<p v-if="show">这是一段文本</p>
+			<!-- v-on，它用来绑定事件监听器，这样我们就可以做一些交互了， 先来看下面的示例: -->
+			<!-- 使用 v-on:click给该元素绑定了一个点击事件 -->
+			<!-- <button v-on:click="handleClose">点击隐藏</button> -->
+			<!-- 表达式除了方法名， 也可以直接是一个内联语旬，上例也可以改写为: -->
+			<button v-on:click="show = false">点击隐藏</button>
+			
+		</div>
+		
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					show:true
+				},
+				// methods:{//方法 如果绑定的事件要处理复杂的业务逻辑，建议还是在 methods 里声明 一个方法，这样可读性更 强也好维护
+					// handleClose: function(){
+					// 	this.show = false;//文本 p 元素就被移除
+					// }
+				// }
+				
+				
+				// Vue. 将 methods 里的方法也代理了，所以也可以像访问 Vue 数据那样来调用方法:
+				// methods:{
+				// 	handleClose: function(){
+				// 		this.close();
+				// 	},
+				// 	close: function(){
+				// 		this.show = false;
+				// 	}
+				// },
+				
+				// 在 handleClose方法内，直接通过 this.close()调用了 close()函数。在上面示例中是多此一举的， 只是用于演示它的用法，在业务中会经常用到，例如以下 几种用 法都是正确的
+				methods:{
+					init: function(text){
+						console.log(text);
+					}
+				},
+				mounted:function(){
+					this.init('在初始化是调用');
+				}
+			})
+			app.init('通过外部调用');
+			
+		</script>
+	</body>
+</html>
