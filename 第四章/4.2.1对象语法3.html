@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+<!-- 当:class 的表达式过长或逻辑复杂时，还可以绑定一个计算属性，这是一种很友好和常见的用
+法，一般当条件多于两个时，都可以使用 data 或 computed，例如使用计算属性 : -->
+		<div id="app">
+			<div id="" :class="classes">
+				
+			</div>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					isActive:true,
+					isError:null
+				},
+				// 除了计算属性，你也可以直接绑定一个 0bject类型的数据，或者使用类似计算属性的 methodso
+				computed:{
+					classes:function(){
+						return{
+							active:this.isActive && !this.isError,
+							'text-fail':this.error && this.error.type === 'fail'
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
