@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+<!-- 			Vue扣的v-bind和v-on指令都提供了语法糖，也可以说是缩写，比如v-bind，可以省略v-bind, 直接写一个冒号 “:”
+ -->
+			<!-- <a v-bind:href="url">链接</a>
+			<img v-bind:src="imgUrl" /> -->
+			<!-- 缩写为 -->
+			<a :href="url">链接</a>
+			<img :src="imgUrl" />
+			
+			<!-- v-on可以直接用 “@” 来缩写: -->
+			<!-- <button v-on:click="handleClose">点击隐藏</button> -->
+			<!-- 缩写为 -->
+			<!-- <button @click="handleClose">点击隐藏</button> -->
+		</div>
+		
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					url:'https://www.baidu.com',
+					imgUrl:'https//xxxx/image.png'
+				}
+			})
+			
+		</script>
+	</body>
+</html>
+<!-- 链接的 href属性和图片的 src属性都被动态设置了，当数据变化时，就会重新渲染。 -->
+<!-- 在数据绑定中，最常见的两个需求就是元素的样式名称 class 和内联样式 style 的动态绑定，它
+们也是 HTML的属性，因此可以使用 v-bind 指令。我们只需要用 v-bind 计算出表达式最终的字符
+串就可以，不过有时候表达式的逻辑较复杂，使用字符串拼接方法较难阅读和维护，所以 Vue.js 增 强了对 class 和 style 的绑定。 -->
