@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- Vue 在渲染元素时 ，出于效率考虑，会尽可能地复用已有的元素而非重新渲染，例如 -->
+		<div id="app">
+			<template v-if="type == 'name'">
+				<label>用户名:</label>
+				<input placeholder="输入用户名" />
+			</template>
+			<template v-else>
+				<label>邮箱:</label>
+				<input placeholder="输入邮箱"/>
+			</template>
+			<button @click="handleToggleClick">切换输入类型</button>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					type:'name'
+				},
+				methods:{
+					handleToggleClick:function(){
+						this.type = this.type === 'name' ? 'mail' : 'name'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
