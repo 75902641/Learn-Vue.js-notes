@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- v-else-if 要紧跟 v-if, v-else 要紧 Rli! v-else-if或 v-if，表达式的值为真时，当前元素/组件及所 有子节点将被渲染，为假时被移除。如果一次判断的是多个元素，可以在Vue扣内置的<template> 元素上使用条件指令，最终渲染的结果不会包含该元素，例如: -->
+		<div id="app">
+			<template v-if="status === 1">
+				<p>这是一段文字</p>
+				<p>这是一段文字</p>
+				<p>这是一段文字</p>
+				
+			</template>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					status:1
+				}
+			})
+		</script>
+	</body>
+</html>
