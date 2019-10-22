@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 在事件绑定上，类似原生 JavaScript 的 onclick等写法，也是在 HTML 上进行监昕的 -->
+		<!-- @click的表达式可以直接使用 JavaScript 语句，也可以是一个在 Vue实例中 methods选项内 的函数名 -->
+		<div id="app">
+			点击次数：{{ counter }}
+			<button @click="counter++"> + 1 </button>
+			<button @click="handleAdd(10)"> + 10 </button>
+			<!-- 在 methods 中定义了我们需要的方法供@click调用， 需要注意的是，@click调用的方法名后 可以不跟括号“()” 。 此时，如果该方法有参数，默认会将原生事件对象 event 传入，可以尝试修 改为@click=”handleAdd”，然后在 handleAdd 内打印出 count 参数看看。在大部分业务场景中，如 果方法不需要传入参数 ，为了简便可以不 写括号。 -->
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					counter : 0
+				},
+				methods : {
+					handleAdd: function (count){
+						this.counter += 10;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
