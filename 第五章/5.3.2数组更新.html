@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!-- Vue 包含了 一组观察数组变异的方法，使用它们改变数组也会触 发视图更新:
+		• push()
+		• pop()
+		• shift()
+		• unshift()
+		• splice()
+		• sort()
+		• reverse() -->
+		
+		
+		
+		<!-- 有些方法不会改变原数组，例如: -->
+		<!-- 
+		•filter()
+		• concat()
+		• slice（）-->
+		<!-- 它们返回的是一个新数组，在使用这些非变异方法时，可以用新数组来替换原数组 -->
+		<div id="app">
+			<ul>
+				<template v-for="book in books">
+					<li>
+						书名:{{book.name}}
+					</li>
+					<li>
+						作者:{{book.author}}
+					</li>
+				</template>
+			</ul>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					books:[
+						{
+							name : '的点点滴滴',
+							author : '哈哈哈'
+						},
+						{
+							name : '12121221',
+							author : '33333'
+						},
+						{
+							name : 'sfsdfsdf',
+							author : 'sffsd'
+						}
+					]
+				}
+			})
+			// app.books.push({
+			// 	name : '*&&^^^^',
+			// 	author : '&&&&&&&'
+			// })
+			
+			app.books = app.books.filter(function(item){
+				return item.name.match(/12121221/);
+			})
+		</script>
+	</body>
+</html>
+
+
+
+<!-- app.books = app.books.filter(function(item){
+				return item.name.match(/12121221/);
+			}) -->
+<!-- 渲染的结果中，第一项和第三项被过滤掉了，只显示了含有 12121221 的选项。 -->
