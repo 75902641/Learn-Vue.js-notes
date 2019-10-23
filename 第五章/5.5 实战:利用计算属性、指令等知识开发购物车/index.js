@@ -5,19 +5,19 @@ var app = new Vue({
 			{
 				id: 1,
 				name: 'iphone7',
-				price: '6188',
+				price: 6188,
 				count: 1
 			},
 			{
 				id: 2,
 				name: 'pad pro',
-				price: '5888',
+				price: 5888,
 				count: 1
 			},
 			{
 				id: 3,
 				name: 'macbookpro',
-				price: '21000',
+				price: 21000,
 				count:2
 			}
 		]
@@ -25,10 +25,11 @@ var app = new Vue({
 	computed:{
 		totalPrice: function(){
 			var total = 0;
-			for (var i = 0; i < this.list.count; i++){
+			for (var i = 0; i < this.list.length; i++){
 				var item = this.list[i];
 				total += item.price * item.count;
 			}
+			console.log(total);
 			return total.toString().replace(/\B (?= (\d{3} )+$)/g, ',');
 		}
 	},
