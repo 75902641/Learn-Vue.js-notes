@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- v-show的用法与v-if基本一致，只不过v-show是改变元素的css属性display。当v-show 表 达式的值为 false 时， 元素会隐藏，查看 DOM 结构会看到元素上加载了内联样式 display: none;,例如 -->
+			<p v-show="status === 1">当status为1时显示该行</p>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					status:1
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 渲染后的结果为 :
+<p style="display: none;">当 status 为 1 时显示该行</p> -->
