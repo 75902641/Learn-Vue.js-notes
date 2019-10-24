@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 给<selected>添加属性 multiple 就可 以多选了， 此时 v-model 绑定 的是一个数组 ， 与复选框用 法类似，示例代码如下 : -->
+		<div id="app">
+			<select v-model="selected" multiple>
+				<option>html</option>
+				<option value ="js">JavaScript</option>
+				<option>css</option>
+			</select>
+			<p>选择的是:{{selected}}</p>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					selected:['html', 'js']
+				}
+			})
+		</script>
+	</body>
+</html>
