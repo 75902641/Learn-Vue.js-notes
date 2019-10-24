@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- v-for 的表达式支持一个可选参数作为当前项的索引 ， 例如 : -->
+		<div id="app">
+			<ul>
+				<li v-for="(book, index) in books">{{index}}-{{book.name}}</li>
+			</ul>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					books:[
+						{name : 'sfsfsdfsdf'},
+						{name : '大幅度发到付的地方'},
+						{name : '2334324234324'}
+					]
+				}
+			})
+		</script>
+	</body>
+</html>
