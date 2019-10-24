@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- Vue扣提供了v-model指令，用于在表单类元素上双向绑定数据，例如 在输入框上使用时，输入的内容会实时映射到绑定的数据上。例如下面的例子: -->
+		<div id="app">
+			<input type="text" v-model="message" placeholder="输入..." />
+			<p>输入的内容是:{{message}}</p>
+			
+			<!-- 对于文本域textarea也是同样的用法 : -->
+			<textarea v-model="text" placeholder="输入...">	
+			</textarea>
+			<p>输入的内容是:{{text}}</p>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message:'',
+					text:''
+				}
+			})
+		</script>
+	</body>
+</html>
