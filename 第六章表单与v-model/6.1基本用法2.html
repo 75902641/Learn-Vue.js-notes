@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 单选按钮:
+		单选按钮在单独使用时，不需要 v-model，直接使用 v-bind 绑定一个布尔类型的值， 为真时
+		选中 ， 为否时不选，例如 : -->
+		<!-- 如果是组合使用来实现互斥选择 的效果，就需要 v-model 配合 value 来使用 : -->
+		<div id="app">
+			<input type="radio" v-model="picked" value="html" id="html"/>
+			<label for="html">HTML</label>
+			<br />
+			<input type="radio" v-model="picked" value="js" id="js"/>
+			<label for="js">JavaScript</label>
+			<br>
+			<input type="radio" v-model="picked" value="css" id="css" />
+			<label for="css">CSS</label>
+			<br>
+			<p>选择的是:{{picked}}</p>
+		</div>
+	</body>
+	<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el:'#app',
+			data:{
+				picked: 'css'
+			}
+		})
+	</script>
+</html>
