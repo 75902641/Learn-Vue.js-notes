@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 除了数组外 ，对象的属性也是可以遍历的，例如 : -->
+		<div id="app">
+			<span v-for="value in user">{{value}}</span>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var app = new Vue({
+				el:'#app',
+				data:{
+					user:{
+						name:'dddd',
+						gender:'男',
+						age:'25'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 渲染后的结果为 : -->
+<!-- <span>Aresn </span><span>男</ span><span>26 </span> -->
