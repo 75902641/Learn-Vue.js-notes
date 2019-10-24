@@ -14,6 +14,12 @@
 			<textarea v-model="text" placeholder="输入...">	
 			</textarea>
 			<p>输入的内容是:{{text}}</p>
+			
+			<!-- 如果希望总是实时更新，可以用@input 来替代 v-model. 事实上， v-model 也是一个特殊的语法糖，只 不过它会在不同的表单上智能处理。例如下面的示例: -->
+			<input type="text" @input="handleInput" placeholder="输入..."/>
+			<p>输入的内容是:{{inputText}}</p>
+			
+			
 		</div>
 		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
@@ -21,7 +27,13 @@
 				el:'#app',
 				data:{
 					message:'',
-					text:''
+					text:'',
+					inputText:''
+				},
+				methods:{
+					handleInput: function(e){
+						this.inputText = e.target.value;
+					}
 				}
 			})
 		</script>
