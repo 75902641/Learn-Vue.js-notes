@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			
+<!-- 			Vue扣的v-bind和v-on指令都提供了语法糖，也可以说是缩写，比如v-bind，可以省略v-bind, 直接写一个冒号 “:”
+ -->
+			<!-- <a v-bind:href="url">链接</a>
+			<img v-bind:src="imgUrl" /> -->
+			<!-- 缩写为 -->
+			<a :href="url">链接</a>
+			<img :src="imgUrl" />
+			
+			<!-- v-on可以直接用 “@” 来缩写: -->
+			<!-- <button v-on:click="handleClose">点击隐藏</button> -->
+			<!-- 缩写为 -->
+			<button @click="handleClose">点击隐藏</button>
+		</div>
+		
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			
+		</script>
+	</body>
+</html>
