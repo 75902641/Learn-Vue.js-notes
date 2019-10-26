@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 在组件中，使用选项 props 来声明需要从父级接收的数据， props 的值可以是两种， 一种是字 符串数组，一种是对象 ， 本小节先介绍数组的用法。比如我们构造一个数组，接收一个来自父级的 数据 message，并把它在组件模板中渲染，示例代码如下 : -->
+			<my-componet message="来自父组件的数据"></my-componet>
+			<!-- 由于HTML特性不区分大小写，当使用 DOM 模板时，驼峰命名(camelCase)的 props 名称 要转为短横分隔命名 Ckebab-case)，例如 : -->
+			<two-componet warning-text="提示信息"></two-componet>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// 父组件的数据
+			// 渲染后的结果为:
+			// <div id="app"> 
+			// <div>来自父组件的数据 </div>
+			// </div>
+			Vue.component('my-componet', {
+				props:['message'],
+				template:'<div>{{message}}</div>'
+			})
+			
+			Vue.component('two-componet', {
+				props:['warningText'],
+				template:'<div>{{warningText}}</div>'
+			})
+			var app = new Vue({
+				el:'#app'
+				
+			})
+		</script>
+	</body>
+</html>
