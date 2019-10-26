@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- Vue 组件的模板在某些情况下会受到 HTML 的限制，比如<table>内规定只允许是<tr>、<td>、
+		<th>等这些表格元素，所以在<table>内直接使用组件是无效的 。 这种情况下，可以使用特殊的 is属性来挂载组件 ，示例代码如下: -->
+		
+		<div id="app">
+			<table is="my-component">
+			</table>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component("my-component", {
+				template:'<div>这里是组件的内容</div>'
+			})
+			var app = new Vue({
+				el:'#app'
+				
+			})
+		</script>
+		
+	</body>
+</html>
+<!-- tbody 在渲染时 ， 会被替换为组件的内容。常见的限制元素还有<ul>、<ol>、<select> -->
