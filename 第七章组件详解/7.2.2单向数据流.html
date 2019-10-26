@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- Vue 2.x 与 Vue l.x 比较大的一个改变就是， Vue2.x 通过 props 传递数据是单向的了， 也就是 父组件数据变化时会传递给子组件，但是反过来不行。而在 Vue l.x 里提供了 .sync 修饰符来支持双
+		向绑定。之所以这样设计，是尽可能将父子组件解稿，避免子组件无意中修改了父组件的状态。 业务中会经常遇到两种需要改变 prop 的情况，一种是父组件传递初始值进来，子组件将它作 为初始值保存起来，在自己的作用域下可以随意使用和修改。这种情况可以在组件 data 内再声明
+		一个数据 ，引用父组件的 prop，示例代码如下: -->
+		<div id="app">
+			<my-component :init-count="1"></my-component>
+		</div>
+		<!-- 另一种情况就是prop作为需要被转变的原始值传入。这种情况用计算属性就可以了，示例代码如下: -->
+		<div id="app2">
+			<two-component :width="100"></two-component>
+		</div>	
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			// 组件中声明了数据 count， 它在组件初始化时会获取来自父组件的 initCount， 之后就与之无关 了，只用维护 count， 这样就可以避免直接操作 initCount。
+			Vue.component('my-component',{
+				props:['initCount'],
+				template:'<div>{{ count }}</div>',
+				data:function(){
+					return {
+						count: this.initCount
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+			
+			Vue.component('two-component',{
+				props:['width'],
+				template:'<div :style="style">组件内容</div>',
+				computed:{
+					style:function(){
+						return {
+							width: this.width + 'px'
+						}
+					}
+				}
+			})
+			var app2 = new Vue({
+				el:'#app2'
+			})
+			// 因为用 css 传递宽度要带单位(px)，但是每次都写太麻烦，而且数值计算一般是不带单位
+			// 的，所以统一在组件内使用计算属性就可以了。
+		</script>
+	</body>
+</html>
