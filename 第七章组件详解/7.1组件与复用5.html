@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- JavaScript对象是引用关系， 所以如果 return出的对象引用了外部的一个对象， 那这个对象就 是共享的 ， 任何一方修改都会同步。比如下面的示例: -->
+		<div id="app">
+			<my-component></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 三个一块变 -->
+		<!-- <script type="text/javascript">
+			var data = {
+				counter:0
+			}
+			Vue.component('my-component', {
+				template:'<button @click="counter++">{{counter}}</button>',
+				data:function(){
+					return data;
+				}
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+		</script> -->
+		
+		<!-- 组件使用了 3次， 但是点击任意一个<button>, 3个的数字都会加 1，那是因为组件的 data引 用的是外部的对象，这肯定不是我们期望的效果， 所以给组件返回一个新的 data 对象来独立， 示 例代码如下 : -->
+		<!-- 这样，点击 3 个按钮就互不影响了，完全达到复用的目的。 -->
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				template:'<button @click="counter++">{{counter}}</button>',
+				data:function(){
+					return {
+						counter:0
+					};
+				}
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+		</script>
+		
+	</body>
+</html>
