@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 有时候，传递的数据并不是直接写死的，而是来自父级的动态数据，这时可以使用指令 v-bind 来动态绑定 props 的值，当父组件的数据变化时，也会传递给子组件。示例代码如下 : -->
+		<!-- 这里用 v-model 绑定了父级的数据 parentMessage，当通过输入框任意输入时，子组件接收到的props“message”也会实时响应，并更新组件模板。 -->
+		<div id="app">
+			<input type="text" v-model="parentMessage" />
+			<my-component :message="parentMessage"></my-component>
+		</div>
+			<!-- 注意，如果你要直接传递数字、布尔值、数组、对象，而且不使用 v-bind，传递 的仅仅是字符串，尝试下面的示例来对比: -->
+		<div id="app2">
+			<two-component messagetwo="[1,2,3]"></two-component>
+			<two-component :messagetwo="[1,2,3]"></two-component>
+		</div>	
+		
+		
+		
+		
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<!-- 第一个app的例子 -->
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				props:['message'],
+				template:'<div>{{ message }}</div>'
+			})
+			var app = new Vue({
+				el:'#app',
+				data:{
+					parentMessage: ''
+				}
+			})
+			// 第二个app的例子
+			Vue.component('two-component', {
+				props:['messagetwo'],
+				template:'<div>{{messagetwo.length}}</div>'
+			})
+			var app2 = new Vue({
+				el:'#app2'
+			})
+			// 同一个组件使用了两次，区别仅仅是第二个使用的是 v-bind，渲染后的结果，第一个 是 7，第二个才是数组的长度 3
+		</script>
+	</body>
+</html>
