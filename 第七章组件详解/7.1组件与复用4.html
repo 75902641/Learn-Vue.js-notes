@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 除了 template选项外，组件中还可以像Vue实例那样使用其他的选项，比如 data、 computed、 methods等。但是在使用data时，和实例稍有区别， data 必须是函数，然后将数据 return 出去，例如: -->
+		<div id="app">
+			<my-component></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				template:'<div>{{message}}</div>',
+				data: function(){
+					return {
+						message:'组件内容'
+					}
+				}
+			});
+			var app = new Vue({
+				el:'#app'
+				
+			})
+			
+		</script>
+	</body>
+</html>
