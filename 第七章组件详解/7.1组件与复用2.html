@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 在Vue实例中，使用 componen饱选项可以局部注册组件，注册后的组件只有在该实例作用域下有效。组件中也可以使用components选项来注册组件，使组件可以嵌套。示例代码如下: -->
+		<div id="app">
+			<my-component></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var Child = {
+				template:'<div>局部注册组件的内容</div>'
+			}
+			var app = new Vue({
+				el:'#app',
+				components:{
+					'my-component':Child
+				}
+			})
+		</script>
+	</body>
+</html>
