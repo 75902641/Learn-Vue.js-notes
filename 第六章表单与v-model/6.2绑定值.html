@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 但在业务中，有时需要绑定一个动态的数据， 这时可以用 v-bind来实现 -->
+		<!-- 单选按钮: -->
+		<div id="app">
+			<input type="radio" v-model="picked" :value="value" />
+			<label>单选按钮</label>
+			<p>{{picked}}</p>
+			<p>{{value}}</p>
+		</div>
+		
+		<!-- 复选框: -->
+		<div id="app2">
+			<input type="checkbox" v-model="toggle" :true-value='value1' :false-value='value2' />
+			<label>复选框</label>
+			<p>{{toggle}}</p>
+			<p>{{value1}}</p>
+			<p>{{value2}}</p>
+		</div>
+		
+		<!-- 选择列表: -->
+		<div id="app3">
+			<select v-model="selected">
+				<option :value="{ number:123 }">123</option>
+			</select>
+			{{ selected.number }}
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			
+			// 单选按钮:
+			var app = new Vue({
+				el:'#app',
+				data:{
+					picked: false,
+					value: 123
+				}
+			})
+			// 在选中 时， app.picked=== app.value， 值都是 123。
+			// 复选框:
+			var app2 = new Vue({
+				el:'#app2',
+				data:{
+					toggle: false,
+					value1: 'a',
+					value2: 'b'
+				}
+			})
+		// 勾选时 ， app.toggle = app.valuel: 未勾选时， app.toggle === app.value2。
+
+		
+			// 选择列表:
+			var app3 = new Vue({
+				el:'#app3',
+				data: {
+					selected: ''
+				}
+			})
+			// 当选中时， app.selected 是一个 Object，所以 app.selected.number= = 123。
+		</script>
+	</body>
+</html>
