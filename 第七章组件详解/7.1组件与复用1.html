@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<my-component></component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		
+		<script type="text/javascript">
+			
+			// 组件与之类似，需要注册后才可以使用。注册有全局注册和局部注册两种方式。全局注册后，任何Vue实例都可以使用
+			// my-component 就是注册的组件自定义标签名称，推荐使用小写加减号分割的形式命名。
+			// 要在父实例中使用这个组件，必须要在实例创建前注册，之后就可以用<my-component> </my-component>的形式来使用组件了，示例代码如下 :
+			
+			Vue.component('my-component', {
+				template:'<div>这里是组件的内容</div>'
+			})
+			
+			var app = new Vue({
+				el:'#app'
+			})
+		</script>
+	</body>
+</html>
+<!-- 渲染后的结果是 :
+<div id=”app”> 
+<div>这里是组件的内容</ div>
+</div> -->
