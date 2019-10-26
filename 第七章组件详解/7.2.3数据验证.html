@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				props: {
+					//必须是数字类型
+					propA: Number,
+					//必须是字符串或数字类型
+					propB: [String, Number],
+					//布尔值，如果没有定义，默认值就是 true
+					propC: {
+						type: Boolean,
+						default: true
+					},
+					//数字，而且是必传
+					propD: {
+						type: Number,
+						required: true,
+					},
+					//如果是数组或对象，默认值必须是一个函数来返回
+					propE: {
+						type: Array,
+						default: function() {
+							return [];
+						}
+					},
+					//自定义一个验证函数
+					propF: {
+						validator: function(value) {
+							return value > 10;
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+ <!-- 验证的type类型可以是:
+• String
+• Number
+• Boolean
+• Object
+• Array
+• Function
+trpe也可以是一个自定义构造器，使用 instanceof 检测。
+当 prop 验证失败时，在开发版本下会在控制台抛出 一条警告。 -->
