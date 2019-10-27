@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 具名 Slot -->
+		<!-- 给<slot>元素指定一个name后可以分发多个内容，具名Slot可以与单个Slot共存，例如下面的示例: -->
+		<div id="app">
+			<child-component>
+				<h2 slot="header">标题</h2>
+				<p>正文内容</p>
+				<p>更多正文内容</p>
+				<div slot="footer">
+					底部信息
+				</div>
+			</child-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('child-component', {
+				template:'\
+				<div class="container">\
+				<div class="header">\
+				<slot name="header"></slot>\
+				</div>\
+				<div class="main">\
+				<slot></slot>\
+				</div>\
+				<div class="footer">\
+				<slot name="footer"></slot>\
+				</div>'
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+		</script>
+	</body>
+</html>
