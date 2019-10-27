@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- Vue2.x可以在自定义组件上使用 v-model指令，我们先来看一个示例: -->
+		<div id="app">
+			<p>总数:{{ total }}</p>
+			<my-component v-model="total"></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				template:'<button @click="handleClick"> +1 </button>',
+				data: function(){
+					return{
+						counter:0
+					}
+				},
+				methods:{
+					handleClick: function(){
+						this.counter++;
+						this.$emit('input', this.counter);
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app',
+				data:{
+					total:0
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 仍然是点击按钮加 1 的效果， 不过这次组件$emit()的事件名是特殊的 input， 在使用组件的父 级，井没有在<my-component>上使用@input= “handler”，而是直接用了 v-model 绑定的一个数据 total。这也可以称作是一个语法糖. -->
