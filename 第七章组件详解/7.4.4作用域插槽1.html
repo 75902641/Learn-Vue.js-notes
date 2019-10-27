@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 作用域插槽是一种特殊的 slot，使用 一个可以复用的模板替换己渲染元素 。概念 比较难理解， 我们先看一个简单的示例来了解它的基本用法 。示例代码如下: -->
+		<div id="app">
+			<child-component>
+				<template scope="props">
+					<p>来自父组件的内容</p>
+					<p>{{props.msg}}</p>
+				</template>
+			</child-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('child-component', {
+				template:'<div class="container"><slot msg="来自子组件的内容"></slot></div>'
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+		</script>
+	</body>
+</html>
+<!-- 观察子组件的模板，在<slot>元素上有一个类似 props 传递数据给组件的写法 msg=”xxx”，将 数据传到了插槽。父组件中使用了<template>元素，而且拥有一个 scope=”props”的特性，这里的 props 只是一个临时变量，就像v-for=”iteminitems，，里面的item 一样。template内可以通过临时变量 props 访问来自子组件插槽的数据 msg。 -->
