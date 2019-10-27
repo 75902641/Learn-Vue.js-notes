@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 上一个例可以间接地用自定义事件来实现: -->
+		<div id="app">
+			<p>总数: {{ total }}</p>
+			<my-component @input="handleGetTotal"></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				template:'<button @click="handleClick"> +1 </button>',
+				data: function(){
+					return{
+						counter:0
+					}
+				},
+				methods:{
+					handleClick: function(){
+						this.counter++;
+						this.$emit('input', this.counter);
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app',
+				data:{
+					total:0
+				},
+				methods:{
+					handleGetTotal:function(total){
+						this.total = total;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
