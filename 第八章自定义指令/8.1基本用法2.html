@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	<!-- 	在大多数使用场景，我们会在bind钩子里绑定一些事件，比如在document上用addEventListener绑定，在unbind里用removeEventListener解绑，比较典型的示例就是让这个元素随着鼠标拖拽。
+		如果需要多个值，自定义指令也可以传入一个JavaScript对象字面量，只要是合法类型的JavaScript表达式都是可以的。示例代码如下 : -->
+		<div id="app">
+			<div v-demo="{msg:'hello', name:'Aresn'}">
+				
+			</div>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.directive('demo', {
+				bind: function (el, binding, vnode){
+					console.log(binding.value.msg);
+					console.log(binding.value.name);
+				}
+			})
+			var app = new Vue({
+				el:'#app'
+			})
+		</script>
+	</body>
+</html>
