@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 父组件也可以直萨在子组件的自定义标签上使用 v-on 来监昕子组件触发的自定义事件，示例 代码如下: -->
+		<div id="app">
+			<p>总数:{{ total }}</p>
+			<my-component @increase="handleGetTotal" @reduce="handleGetTotal"></my-component>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('my-component', {
+				template:'<div><button @click="handleIncrease"> +1 </button><button @click="handleReduce"> -1 </button></div>',
+				data:function(){
+					return {
+						counter:0
+					}
+				},
+				methods:{
+					handleIncrease:function(){
+						this.counter++;
+						this.$emit('increase', this.counter);
+					},
+					handleReduce:function(){
+						this.counter--;
+						this.$emit('reduce', this.counter);
+					}
+				}
+			})
+			
+			var app = new Vue({
+				el:'#app',
+				data:{
+					total:0
+				},
+				methods:{
+					handleGetTotal:function(total){
+						this.total = total;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 上面示例中，子组件有两个按钮，分别实现加 1 和减 1 的效果 ， 在改变组件的 data “ counter" 后，通过$emit()再把它传递给父组件，父组件用 v-on:increase和 v”on:reduce(示例使用的是语法糖)。 $emit()方法的第一个参数是自定义事件的名称 ， 例如示例的 increase 和 reduce 后面的参数都是要传 递的数据，可以不填或填写多个。 -->
