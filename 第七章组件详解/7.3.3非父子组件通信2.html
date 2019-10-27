@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 当子组件较多时 ， 通过 this.$children 来一一遍历出我们需要的一个组件实例是比较困难的， 尤其是组件动态渲染时，它们的序列是不固定的。 Vue 提供了子组件索引的方法，用特殊的属性 ref 来为子组件指定一个索引名称，示例 代码如下: -->
+		<div id="app">
+			<button @click="handleRef">通过 ref 获取子组件实例</button>
+			<component-a ref="comA"></component-a>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('component-a',{
+				template:'<div>子组件</div>',
+				data:function(){
+					return {
+						message:'子组件内容'
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app',
+				methods:{
+					handleRef:function(){
+						var msg = this.$refs.comA.message;
+						console.log(msg);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 在父组件模板中，子组件标签上使用 ref指定一个名称，井在父组件内通过 this.$refs 来访问指
+定名称的子组件 。 -->
