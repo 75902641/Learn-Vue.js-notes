@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<!-- 在子组件中，使用 this.$parent 可以直接访问该组件的父实例或组件，父组件也可以通过
+		this.$children 访问它所有的子组件，而且可以递归向上或向下无线访问， 直到根实例或最内层的组 件。示例代码如下: -->
+		<div id="app">
+			{{message}}
+			<component-a></component-a>
+		</div>
+		<script src="https://unpkg.com/vue/dist/vue.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Vue.component('component-a', {
+				template:'<button @click="handleEvent">通过父链直接修改数据</button>',
+				methods:{
+					handleEvent:function(){
+						this.$parent.message = '来自组件 component-a 的内容';
+					}
+				}
+			})
+			var app = new Vue({
+				el:'#app',
+				data:{
+					message: ''
+				}
+			})
+		</script>
+	</body>
+</html>
+<!-- 子组件应该尽可能地避免依赖父组件的数据，更不应 该去主动修改它的数据，因为这样使得父子组件紧藕合，只看父组件，很难理解父组件的状态，因 为它可能被任意组件修改 ， 理想情况下，只有组件自己能修改它的状态。父子组件最好还是通过尽管 Vue 允许这样操作，但在业务中 ，props 和 $emit 来通信。 -->
